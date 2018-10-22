@@ -50,7 +50,7 @@ class Invoice extends Model
         $this->lines()->create([
             'amount' => $amount,
             'description' => $description,
-            'tax' => $amount - $amount / (1 + $taxPercentage),
+            'tax' => $amount * $taxPercentage,
             'tax_percentage' => $taxPercentage,
         ]);
         return $this->recalculate();
